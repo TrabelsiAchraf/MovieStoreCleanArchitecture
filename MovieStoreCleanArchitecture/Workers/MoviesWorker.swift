@@ -30,7 +30,6 @@ class MoviesWorker {
             }
         }
     }
-    
 }
 
 protocol MoviesStoreProtocol {

@@ -16,5 +16,7 @@ struct Cinema {
         static let spiderman = Movie(id: "09876", title: "Spiderman", overview: "A movie about young man...", releaseDate: Date(), rating: 3.5, producer: "Kiko")
         
         static let missionImpossible = Movie(id: "515515", title: "Mission Impossible", overview: "A movie about agent...", releaseDate: Date(), rating: 4, producer: "Christophe Lacha")
+        
+        static let lordOfTheRing = Movie(id: "76579", title: "The Lord Of The Ring", overview: "A movie about ...", releaseDate: Date(), rating: 4.75, producer: "Adolfe")
     }
 }

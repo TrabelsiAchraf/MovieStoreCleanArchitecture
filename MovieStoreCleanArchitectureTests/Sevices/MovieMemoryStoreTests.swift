@@ -38,7 +38,6 @@ class MovieMemoryStoreTests: XCTestCase {
     
     // MARK: - Test CRUD operations - Inner closure
     
-    
     func test_CreateMovie_ShouldAdd_NewMovie_InnerClosure() {
         // Given
         let movieToAdd = Cinema.Movies.missionImpossible
@@ -46,6 +45,7 @@ class MovieMemoryStoreTests: XCTestCase {
         // When
         var createdMovie: Movie?
         var addMovieError: MoviesStoreError?
+        // Create an expectation for a background download task.
         let addMovieExpectation = expectation(description: "Wait for addMovie() to return")
         sut.addMovie(movieToAdd: movieToAdd) { (movie: () throws -> Movie?) in
             _ = try! movie()
@@ -54,9 +54,11 @@ class MovieMemoryStoreTests: XCTestCase {
             } catch let error as MoviesStoreError {
                 addMovieError = error
             } catch {}
+            // Fulfill the expectation to indicate that the background task has finished successfully.
             addMovieExpectation.fulfill()
         }
         
+        // Wait until the expectation is fulfilled, with a timeout of 1 seconds.
         waitForExpectations(timeout: 1.0)
         
         // Then
