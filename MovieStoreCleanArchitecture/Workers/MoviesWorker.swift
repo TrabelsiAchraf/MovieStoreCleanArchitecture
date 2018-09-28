@@ -30,11 +30,27 @@ class MoviesWorker {
             }
         }
     }
+    
+    func fetchMovies(completionHandler: @escaping ([Movie]) -> Void) {
+        moviesStore.fetchMovies { (movies: () throws -> [Movie]) in
+            do {
+                let movies = try movies()
+                DispatchQueue.main.async {
+                    completionHandler(movies)
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    completionHandler([])
+                }
+            }
+        }
+    }
 }
 
 protocol MoviesStoreProtocol {
     // MARK: CRUD operations - Inner closure
     func addMovie(movieToAdd: Movie, completionHandler: @escaping (() throws -> Movie?) -> Void)
+    func fetchMovies(completionHandler: @escaping (() throws -> [Movie]) -> Void)
 }
 
 protocol MoviesStoreUtilityProtocol {}
@@ -49,5 +65,4 @@ extension MoviesStoreUtilityProtocol {
 enum MoviesStoreError: Equatable, Error {
     case CannotFetch(String)
     case CannotCreate(String)
-    case CannotDelete(String)
 }

@@ -70,7 +70,7 @@ class AddMovieInteractorTests: XCTestCase {
         sut.moviesWorker = moviesWorkerSpy
         
         // When
-        let request = AddMovie.Add.Request(movieFromFields: Movie(id: "00", title: "", overview: "", releaseDate: Date(), rating: 0, producer: ""))
+        let request = AddMovie.Add.Request(movieFromFields: Movie(id: "00", title: "", overview: "", releaseDate: 1538132604, rating: 0, producer: ""))
         sut.addMovie(request: request)
         
         // Then

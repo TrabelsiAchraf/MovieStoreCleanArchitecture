@@ -21,5 +21,8 @@ class MovieMemoryStore: MoviesStoreProtocol, MoviesStoreUtilityProtocol {
         completionHandler { return movie }
     }
     
+    func fetchMovies(completionHandler: @escaping (() throws -> [Movie]) -> Void) {
+        completionHandler { return type(of: self).movies }
+    }
 }
 

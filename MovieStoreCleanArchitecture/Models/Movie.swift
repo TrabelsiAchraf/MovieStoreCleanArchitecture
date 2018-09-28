@@ -12,7 +12,7 @@ struct Movie: Equatable {
     var id: String?
     var title: String
     var overview: String
-    var releaseDate: Date
+    var releaseDate: UInt64
     var rating: Double
     var producer: String
 }

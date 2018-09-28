@@ -12,49 +12,36 @@
 
 import UIKit
 
-@objc protocol AddMovieRoutingLogic
-{
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
+@objc protocol AddMovieRoutingLogic {
+    func popViewController(_ navigationController: UINavigationController)
 }
 
-protocol AddMovieDataPassing
-{
-  var dataStore: AddMovieDataStore? { get }
+protocol AddMovieDataPassing {
+    var dataStore: AddMovieDataStore? { get }
 }
 
-class AddMovieRouter: NSObject, AddMovieRoutingLogic, AddMovieDataPassing
-{
-  weak var viewController: AddMovieViewController?
-  var dataStore: AddMovieDataStore?
-  
-  // MARK: Routing
-  
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
-  //{
-  //  if let segue = segue {
-  //    let destinationVC = segue.destination as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //  } else {
-  //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-  //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-  //  }
-  //}
-
-  // MARK: Navigation
-  
-  //func navigateToSomewhere(source: AddMovieViewController, destination: SomewhereViewController)
-  //{
-  //  source.show(destination, sender: nil)
-  //}
-  
-  // MARK: Passing data
-  
-  //func passDataToSomewhere(source: AddMovieDataStore, destination: inout SomewhereDataStore)
-  //{
-  //  destination.name = source.name
-  //}
+class AddMovieRouter: NSObject, AddMovieRoutingLogic, AddMovieDataPassing {
+    
+    weak var viewController: AddMovieViewController?
+    var dataStore: AddMovieDataStore?
+    
+    // MARK: Routing
+    
+    func popViewController(_ navigationController: UINavigationController) {
+        navigationController.popViewController(animated: true)
+    }
+    
+    // MARK: Navigation
+    
+    //func navigateToSomewhere(source: AddMovieViewController, destination: SomewhereViewController)
+    //{
+    //  source.show(destination, sender: nil)
+    //}
+    
+    // MARK: Passing data
+    
+    //func passDataToSomewhere(source: AddMovieDataStore, destination: inout SomewhereDataStore)
+    //{
+    //  destination.name = source.name
+    //}
 }

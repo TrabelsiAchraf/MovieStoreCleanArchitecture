@@ -1,0 +1,19 @@
+{
+    "Movies": [
+        {
+            "id": "2345678987654",
+            "title": "Harry Potter",
+            "overview": "A movie about a wizard ...",
+            "releaseDate": 1538132604,
+            "rating": 4.5,
+            "producer": "TRABELSI Achraf"
+        }, {
+            "id": "678944678988",
+            "title": "Spiderman",
+            "overview": "A movie about a young man ...",
+            "releaseDate": 1538138604,
+            "rating": 3.5,
+            "producer": "TRABELSI Achraf"
+        }
+    ]
+}

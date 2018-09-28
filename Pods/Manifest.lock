@@ -1,0 +1,16 @@
+PODS:
+  - Hippolyte (0.4.0)
+
+DEPENDENCIES:
+  - Hippolyte
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Hippolyte
+
+SPEC CHECKSUMS:
+  Hippolyte: b1c306140f7063d6608929d0a8b3bcee47d2d6df
+
+PODFILE CHECKSUM: cddfc32f4483b70ebc914d721c29a4d51611c0b3
+
+COCOAPODS: 1.5.0

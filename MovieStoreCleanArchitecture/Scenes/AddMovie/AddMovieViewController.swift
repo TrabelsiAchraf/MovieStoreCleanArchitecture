@@ -73,19 +73,21 @@ class AddMovieViewController: UIViewController, AddMovieDisplayLogic {
     @IBOutlet weak var ratingSlider: UISlider!
 
     @IBAction func saveMovieButtonDidClicked(_ sender: UIButton) {
+        
         let title = titleTextField.text!
         let producer = producerTextField.text!
         let overview = overviewTextView.text!
-        let releaseDate = releaseDatePicker.date
+        let releaseDate = releaseDatePicker.date.timeIntervalSince1970
         let rating = ratingSlider.value
         
-        let request = AddMovie.Add.Request(movieFromFields: Movie(id: nil, title: title, overview: overview, releaseDate: releaseDate, rating: Double(rating), producer: producer))
+        let request = AddMovie.Add.Request(movieFromFields: Movie(id: nil, title: title, overview: overview, releaseDate: UInt64(releaseDate), rating: Double(rating), producer: producer))
         
         interactor?.addMovie(request: request)
     }
     
     func displayAddMovie(viewModel: AddMovie.Add.ViewModel) {
         if viewModel.movie != nil {
+            router?.popViewController(self.navigationController!)
             // router?.routeToListOrders(segue: nil)
         } else {
             showOrderFailureAlert(title: "Failed to create movie", message: "Please correct your movie and submit again.")
