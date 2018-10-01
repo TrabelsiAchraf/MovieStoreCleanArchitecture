@@ -18,11 +18,12 @@ class AddMoviePresenterTests: XCTestCase {
     // MARK: - Test lifecycle
     
     override func setUp() {
+        super.setUp()
         setupAddMoviePresenter()
     }
 
     override func tearDown() {
-
+        super.tearDown()
     }
     
     // MARK: - Test setup

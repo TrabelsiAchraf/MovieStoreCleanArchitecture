@@ -32,7 +32,6 @@ class AddMovieInteractorTests: XCTestCase {
         sut = AddMovieInteractor()
     }
     
-    
     class AddMoviePresentationLogicSpy: AddMoviePresentationLogic {
         
         // MARK: Method call expectations
@@ -62,7 +61,7 @@ class AddMovieInteractorTests: XCTestCase {
     
     // MARK: - Test add a new movie
     
-    func test_CreateMovie_should_ask_MoviesWorker_toCreate_theNewMovie_and_presenter_toFormatIt() {
+    func test_createMovie_should_ask_MoviesWorker_toCreate_theNewMovie_and_presenter_toFormatIt() {
         // Given
         let addMoviePresentationLogicSpy = AddMoviePresentationLogicSpy()
         sut.presenter = addMoviePresentationLogicSpy
@@ -76,6 +75,5 @@ class AddMovieInteractorTests: XCTestCase {
         // Then
         XCTAssert(moviesWorkerSpy.addMovieCalled, "AddMovie() should ask MoviesWorker to add the new movie")
         XCTAssert(addMoviePresentationLogicSpy.presentAddMovieCalled, "AddMovie() should ask presenter to format the newly created movie")
-    }
-    
+    }    
 }
