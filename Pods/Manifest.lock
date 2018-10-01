@@ -1,16 +1,24 @@
 PODS:
   - Hippolyte (0.4.0)
+  - Nimble (7.3.0)
+  - Quick (1.3.1)
 
 DEPENDENCIES:
   - Hippolyte
+  - Nimble
+  - Quick
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - Hippolyte
+    - Nimble
+    - Quick
 
 SPEC CHECKSUMS:
   Hippolyte: b1c306140f7063d6608929d0a8b3bcee47d2d6df
+  Nimble: c8d6a1f463701921c46de965c673e13cafa09196
+  Quick: d17304d58d0d169dd0bd1c6e5c28e3318de32a1a
 
-PODFILE CHECKSUM: cddfc32f4483b70ebc914d721c29a4d51611c0b3
+PODFILE CHECKSUM: 103d557d4bc748f511449d3eae9442f34c25da3e
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3

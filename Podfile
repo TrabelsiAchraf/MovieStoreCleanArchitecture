@@ -7,6 +7,8 @@ target 'MovieStoreCleanArchitecture' do
 
   # Pods for MovieStoreCleanArchitecture
   pod 'Hippolyte'
+  pod 'Quick'
+  pod 'Nimble'
 
   target 'MovieStoreCleanArchitectureTests' do
     inherit! :search_paths

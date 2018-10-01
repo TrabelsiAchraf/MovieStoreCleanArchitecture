@@ -133,6 +133,7 @@ class MovieMemoryStoreTests: XCTestCase {
                 
                 let getMobiesListExpectation = expectation(description: "Get movies list")
                 URLSession.shared.dataTask(with: url) { (data, response, error) in
+                    XCTAssertNil(error)
                     guard let data = data else { return }
                     do {
                         let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
@@ -144,8 +145,8 @@ class MovieMemoryStoreTests: XCTestCase {
                                 getMobiesListExpectation.fulfill()
                             }
                         }
-                    } catch let err {
-                        print("Err", err)
+                    } catch let error {
+                        print("Error", error)
                     }
                     }.resume()
                 waitForExpectations(timeout: 5, handler: nil)
