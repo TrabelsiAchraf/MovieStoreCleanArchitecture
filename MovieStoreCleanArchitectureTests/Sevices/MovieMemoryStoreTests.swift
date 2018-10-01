@@ -17,10 +17,12 @@ class MovieMemoryStoreTests: XCTestCase {
     // MARK: - Test lifecycle
     
     override func setUp() {
+        super.setUp()
         setupMoviesMemoryStore()
     }
     
     override func tearDown() {
+        super.tearDown()
         resetMoviesMemoryStore()
     }
     
@@ -38,9 +40,9 @@ class MovieMemoryStoreTests: XCTestCase {
         Hippolyte.shared.stop()
     }
     
-    // MARK: - Test CRUD operations - Inner closure
+    // MARK: - Test CRUD operations
     
-    func test_CreateMovie_ShouldAdd_NewMovie() {
+    func test_createMovie_shouldAdd_newMovie() {
         // Given
         let movieToAdd = Cinema.Movies.missionImpossible
         
@@ -50,7 +52,7 @@ class MovieMemoryStoreTests: XCTestCase {
         // Create an expectation for a background download task.
         let addMovieExpectation = expectation(description: "Wait for addMovie() to return")
         sut.addMovie(movieToAdd: movieToAdd) { (movie: () throws -> Movie?) in
-            _ = try! movie()
+            //_ = try! movie()
             do {
                 createdMovie = try movie()
             } catch let error as MoviesStoreError {
@@ -68,7 +70,7 @@ class MovieMemoryStoreTests: XCTestCase {
         XCTAssertNil(addMovieError, "addMovie() should not return an error")
     }
     
-    func test_FetchMovies_ShouldReturn_ListMovies() {
+    func test_fetchMovies_shouldReturn_moviesList() {
         // Given
         
         // When
@@ -94,8 +96,6 @@ class MovieMemoryStoreTests: XCTestCase {
         XCTAssertNil(fetchedMoviesError, "fetchMovies() should not return an error")
     }
     
-    
-    
     // ***********
     //
 //    func test_GetMoviesList_using_XCTestAPI() {
@@ -118,7 +118,7 @@ class MovieMemoryStoreTests: XCTestCase {
 //        waitForExpectations(timeout: 5, handler: nil)
 //    }
     
-    func test_GetMoviesList_using_HippolyteLib() {
+    func test_should_getMoviesList_using_hippolyteLib() {
         guard let url = URL(string: "https://api.cinema.com/movies") else { return }
         var stub = StubRequest(method: .GET, url: url)
         var response = StubResponse()
@@ -126,8 +126,7 @@ class MovieMemoryStoreTests: XCTestCase {
         if let path = Bundle(for: type(of: self)).path(forResource: "Movies", ofType: "json") {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                let body = data
-                response.body = body as Data?
+                response.body = data as Data?
                 stub.response = response
                 Hippolyte.shared.add(stubbedRequest: stub)
                 Hippolyte.shared.start()

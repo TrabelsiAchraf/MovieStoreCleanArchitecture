@@ -12,7 +12,7 @@ class MovieMemoryStore: MoviesStoreProtocol, MoviesStoreUtilityProtocol {
     
     static var movies : [Movie] = []
     
-    // MARK: - CRUD operations - Inner closure
+    // MARK: - CRUD operations
     
     func addMovie(movieToAdd: Movie, completionHandler: @escaping (() throws -> Movie?) -> Void) {
         var movie = movieToAdd

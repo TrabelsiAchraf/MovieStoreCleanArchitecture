@@ -47,26 +47,22 @@ class MoviesWorkerTests: XCTestCase {
         
         override func fetchMovies(completionHandler: @escaping (() throws -> [Movie]) -> Void) {
             fetchedMoviesCalled = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-                completionHandler { () -> [Movie] in
-                    return MoviesWorkerTests.testMovies
-                }
+            completionHandler { () -> [Movie] in
+                return MoviesWorkerTests.testMovies
             }
         }
         
         override func addMovie(movieToAdd: Movie, completionHandler: @escaping (() throws -> Movie?) -> Void) {
             addMovieCalled = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-                completionHandler { () -> Movie in
-                    return MoviesWorkerTests.testMovies.first!
-                }
+            completionHandler { () -> Movie in
+                return MoviesWorkerTests.testMovies.first!
             }
         }
     }
     
     // MARK: - Tests
     
-    func test_FetchMovies_Should_Return_ListOfMovies() {
+    func test_fetchMovies_should_return_listOfMovies() {
         // Given
         let movieMemoryStoreSpy = sut.moviesStore as! MovieMemoryStoreSpy
         
@@ -77,7 +73,7 @@ class MoviesWorkerTests: XCTestCase {
             fetchedMovies = movies
             expect.fulfill()
         }
-        waitForExpectations(timeout: 2)
+        waitForExpectations(timeout: 1)
         
         // Then
         XCTAssert(movieMemoryStoreSpy.fetchedMoviesCalled, "Calling fetchMovies() should ask the data store for a list of movies")
@@ -87,7 +83,7 @@ class MoviesWorkerTests: XCTestCase {
         }
     }
     
-    func test_CreateMovie_Should_ReturnTheCreatedMovie() {
+    func test_createMovie_should_returnTheCreatedMovie() {
         // Given
         let movieMemoryStoreSpy = sut.moviesStore as! MovieMemoryStoreSpy
         let movieToCreate = MoviesWorkerTests.testMovies.first!
@@ -99,7 +95,7 @@ class MoviesWorkerTests: XCTestCase {
             createdMovie = movie
             expect.fulfill()
         }
-        waitForExpectations(timeout: 2)
+        waitForExpectations(timeout: 1)
         
         // Then
         XCTAssert(movieMemoryStoreSpy.addMovieCalled, "Calling createOrder() should ask the data store to create the new movie")

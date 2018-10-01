@@ -48,7 +48,7 @@ class MoviesWorker {
 }
 
 protocol MoviesStoreProtocol {
-    // MARK: CRUD operations - Inner closure
+    // MARK: CRUD operations
     func addMovie(movieToAdd: Movie, completionHandler: @escaping (() throws -> Movie?) -> Void)
     func fetchMovies(completionHandler: @escaping (() throws -> [Movie]) -> Void)
 }
@@ -62,7 +62,7 @@ extension MoviesStoreUtilityProtocol {
     }
 }
 
-enum MoviesStoreError: Equatable, Error {
+enum MoviesStoreError: Error {
     case CannotFetch(String)
     case CannotCreate(String)
 }
