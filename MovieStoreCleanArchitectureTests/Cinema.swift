@@ -7,7 +7,6 @@
 //
 
 @testable import MovieStoreCleanArchitecture
-import XCTest
 
 struct Cinema {
     struct Movies {

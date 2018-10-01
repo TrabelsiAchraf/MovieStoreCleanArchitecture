@@ -61,7 +61,7 @@ class MoviesListInteractorTests: XCTestCase {
     
     // MARK: - Tests
     
-    func test_FetchMovies_ShouldAsk_MoviesWorker_ToFetchAndPresenter_ToFormatResult() {
+    func test_fetchMovies_shouldAsk_moviesWorkerToFetch_And_PresenterToFormatResult() {
         // Given
         let listMoviesPresentationLogicSpy = ListMoviesPresentationLogicSpy()
         sut.presenter = listMoviesPresentationLogicSpy

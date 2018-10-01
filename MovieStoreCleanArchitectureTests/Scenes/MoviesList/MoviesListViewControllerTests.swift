@@ -38,7 +38,7 @@ class MoviesListViewControllerTests: XCTestCase {
     
     func loadView() {
         window.addSubview(sut.view)
-        RunLoop.current.run(until: Date())
+//        RunLoop.current.run(until: Date())
     }
     
     // MARK: - Test doubles
@@ -73,7 +73,7 @@ class MoviesListViewControllerTests: XCTestCase {
     
     // MARK: - Tests
     
-    func test_Should_FetchMovies_When_ViewDidAppear() {
+    func test_should_fetchMovies_when_viewDidAppear() {
         // Given
         let moviesListBusinessLogicSpy = MoviesListBusinessLogicSpy()
         sut.interactor = moviesListBusinessLogicSpy
@@ -86,7 +86,7 @@ class MoviesListViewControllerTests: XCTestCase {
         XCTAssert(moviesListBusinessLogicSpy.fetchMoviesCalled, "Should fetch movies right after the view appears")
     }
     
-    func test_Should_Display_FetchedMovies() {
+    func test_should_display_fetchedMovies() {
         // Given
         let tableViewSpy = TableViewSpy()
         sut.tableView = tableViewSpy
@@ -100,7 +100,7 @@ class MoviesListViewControllerTests: XCTestCase {
         XCTAssert(tableViewSpy.reloadDataCalled, "Displaying fetched movies should reload the tableView")
     }
     
-    func test_NumberOfSectionsInTableView_ShouldAlwaysBeOne() {
+    func test_numberOfSectionsInTableView_shouldAlwaysBeOne() {
         // Given
         let tableView = sut.tableView
         
@@ -111,7 +111,7 @@ class MoviesListViewControllerTests: XCTestCase {
         XCTAssertEqual(numberOfSections, 1, "The number of table view sections should always be 1")
     }
     
-    func test_NumberOfRowsInAnySection_Should_Equal_OfMoviesToDisplay() {
+    func test_numberOfRowsInAnySection_should_equal_toMoviesToDisplay() {
         // Given
         let tableView = sut.tableView
         let displayedMovies = [MoviesList.Fetch.ViewModel.DisplayedMovie(title: "Harry Potter", details: "* Date : 18/09/18 - Rating : 2.50")]
@@ -124,7 +124,7 @@ class MoviesListViewControllerTests: XCTestCase {
         XCTAssertEqual(numberOfRows, displayedMovies.count, "The number of table rows should equal the number of movies to display")
     }
     
-    func test_ShouldConfigureTableViewCell_ToDisplay_Movie() {
+    func test_shouldConfigureTableViewCell_toDisplay_movie() {
         // Given
         let tableView = sut.tableView
         let displayedMovies = [MoviesList.Fetch.ViewModel.DisplayedMovie(title: "Harry Potter", details: "* Date : 18/09/18 - Rating : 2.50")]

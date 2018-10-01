@@ -54,7 +54,7 @@ class MoviesListPresenterTests: XCTestCase {
     
     // MARK: - Tests
     
-    func test_PresentFetchMovies_ShouldFormat_MoviesForDisplay() {
+    func test_presentFetchMovies_shouldFormat_moviesForDisplay() {
         // Given
         let moviesListDisplayLogicSpy = MoviesListDisplayLogicSpy()
         sut.viewController = moviesListDisplayLogicSpy
@@ -73,7 +73,7 @@ class MoviesListPresenterTests: XCTestCase {
         }
     }
     
-    func test_PresentFetchedMovies_ShouldAsk_ViewController_ToDisplay_FetchedMovies() {
+    func test_presentFetchedMovies_shouldAsk_viewController_toDisplay_fetchedMovies() {
         // Given
         let moviesListDisplayLogicSpy = MoviesListDisplayLogicSpy()
         sut.viewController = moviesListDisplayLogicSpy
