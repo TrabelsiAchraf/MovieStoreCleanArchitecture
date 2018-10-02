@@ -124,7 +124,7 @@ class MovieMemoryStoreTests: XCTestCase {
                     expect.fulfill()
                 }
                 
-                wait(for: [expect], timeout: 1)
+                wait(for: [expect], timeout: 2)
                 
             } catch {}
         }
