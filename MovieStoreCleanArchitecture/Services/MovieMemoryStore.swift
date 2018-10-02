@@ -24,5 +24,26 @@ class MovieMemoryStore: MoviesStoreProtocol, MoviesStoreUtilityProtocol {
     func fetchMovies(completionHandler: @escaping (() throws -> [Movie]) -> Void) {
         completionHandler { return type(of: self).movies }
     }
+    
+    func fetchMoviesAPI(completionHandler: @escaping (() throws -> [Movie]) -> Void) {
+        guard let url = URL(string: "https://fakeAPI.cinema.com/movies") else { return }
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let data = data else { return }
+            do {
+                
+                let decoder = JSONDecoder()
+                let movieData = try decoder.decode(Movies.self, from: data)
+                
+                if let movies = movieData.movies {
+                    type(of: self).movies = movies
+                }
+                
+                completionHandler { return type(of: self).movies }
+                
+            } catch {
+                completionHandler { throw MoviesStoreError.CannotFetch("Cannot fetch movies!")}
+            }
+            }.resume()
+    }
 }
 

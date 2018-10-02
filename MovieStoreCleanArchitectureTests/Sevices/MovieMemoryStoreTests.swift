@@ -96,33 +96,15 @@ class MovieMemoryStoreTests: XCTestCase {
         XCTAssertNil(fetchedMoviesError, "fetchMovies() should not return an error")
     }
     
-    // ***********
-    //
-//    func test_GetMoviesList_using_XCTestAPI() {
-//        guard let url = URL(string: "https://api.github.com/users/shashikant86") else { return }
-//        let getMobiesListExpectation = expectation(description: "Get movies list")
-//        URLSession.shared.dataTask(with: url) { (data, response
-//            , error) in
-//            guard let data = data else { return }
-//            do {
-//                let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
-//                if let result = json as? NSDictionary {
-//                    XCTAssertTrue(result["name"] as! String == "Shashikant")
-//                    XCTAssertTrue(result["location"] as! String == "London")
-//                    getMobiesListExpectation.fulfill()
-//                }
-//            } catch let err {
-//                print("Err", err)
-//            }
-//            }.resume()
-//        waitForExpectations(timeout: 5, handler: nil)
-//    }
-    
-    func test_should_getMoviesList_using_hippolyteLib() {
-        guard let url = URL(string: "https://api.cinema.com/movies") else { return }
+    func test_should_fetchMovies_fromAPI() {
+        // Given
+        guard let url = URL(string: "https://fakeAPI.cinema.com/movies") else { return }
         var stub = StubRequest(method: .GET, url: url)
         var response = StubResponse()
         
+        // When
+        var fetechedMovies = [Movie]()
+        var fetchedMoviesError: MoviesStoreError?
         if let path = Bundle(for: type(of: self)).path(forResource: "Movies", ofType: "json") {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
@@ -131,26 +113,28 @@ class MovieMemoryStoreTests: XCTestCase {
                 Hippolyte.shared.add(stubbedRequest: stub)
                 Hippolyte.shared.start()
                 
-                let getMobiesListExpectation = expectation(description: "Get movies list")
-                URLSession.shared.dataTask(with: url) { (data, response, error) in
-                    XCTAssertNil(error)
-                    guard let data = data else { return }
+                let expect = expectation(description: "Fatch movies list")
+                
+                sut.fetchMoviesAPI { (movies: () throws -> [Movie]) in
                     do {
-                        let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
-                        if let result = json as? NSDictionary {
-                            if let movies = result["Movies"] as? [NSDictionary] {
-                                XCTAssertTrue(movies.first!["title"] as! String == "Harry Potter")
-                                XCTAssertTrue(movies.first!["producer"] as! String == "TRABELSI Achraf")
-                                XCTAssertTrue(movies.first!["rating"] as! Double ==  4.5)
-                                getMobiesListExpectation.fulfill()
-                            }
-                        }
-                    } catch let error {
-                        print("Error", error)
-                    }
-                    }.resume()
+                        fetechedMovies = try movies()
+                    } catch let error as MoviesStoreError {
+                        fetchedMoviesError = error
+                    } catch {}
+                    expect.fulfill()
+                }
+                
                 waitForExpectations(timeout: 5, handler: nil)
             } catch {}
         }
+        
+        // Then
+        XCTAssertEqual(fetechedMovies.first?.title, "Harry Potter")
+        XCTAssertEqual(fetechedMovies.count, testMovies.count, "fetchedMovies() should return a list of movies")
+        
+        for movie in fetechedMovies {
+            XCTAssert(testMovies.contains(movie), "Fetched movies should match the movies in the data store")
+        }
+        XCTAssertNil(fetchedMoviesError, "fetchMovies() should not return an error")
     }
 }

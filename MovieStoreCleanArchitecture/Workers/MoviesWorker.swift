@@ -51,6 +51,7 @@ protocol MoviesStoreProtocol {
     // MARK: CRUD operations
     func addMovie(movieToAdd: Movie, completionHandler: @escaping (() throws -> Movie?) -> Void)
     func fetchMovies(completionHandler: @escaping (() throws -> [Movie]) -> Void)
+    func fetchMoviesAPI(completionHandler: @escaping (() throws -> [Movie]) -> Void)
 }
 
 protocol MoviesStoreUtilityProtocol {}
