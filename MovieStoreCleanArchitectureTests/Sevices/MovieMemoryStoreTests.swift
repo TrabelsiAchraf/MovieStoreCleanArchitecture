@@ -24,6 +24,7 @@ class MovieMemoryStoreTests: XCTestCase {
     override func tearDown() {
         super.tearDown()
         resetMoviesMemoryStore()
+//        Hippolyte.shared.stop()
     }
     
     // MARK: - Test setup
@@ -37,7 +38,6 @@ class MovieMemoryStoreTests: XCTestCase {
     func resetMoviesMemoryStore() {
         MovieMemoryStore.movies = []
         sut = nil
-        Hippolyte.shared.stop()
     }
     
     // MARK: - Test CRUD operations
@@ -113,7 +113,7 @@ class MovieMemoryStoreTests: XCTestCase {
                 Hippolyte.shared.add(stubbedRequest: stub)
                 Hippolyte.shared.start()
                 
-                let expect = expectation(description: "Fatch movies list")
+                let expect = expectation(description: "Fetch movies list")
                 
                 sut.fetchMoviesAPI { (movies: () throws -> [Movie]) in
                     do {
@@ -124,7 +124,8 @@ class MovieMemoryStoreTests: XCTestCase {
                     expect.fulfill()
                 }
                 
-                waitForExpectations(timeout: 5, handler: nil)
+                wait(for: [expect], timeout: 1)
+                
             } catch {}
         }
         
