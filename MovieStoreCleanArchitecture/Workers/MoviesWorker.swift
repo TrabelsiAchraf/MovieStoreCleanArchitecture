@@ -32,7 +32,7 @@ class MoviesWorker {
     }
     
     func fetchMovies(completionHandler: @escaping ([Movie]) -> Void) {
-        moviesStore.fetchMovies { (movies: () throws -> [Movie]) in
+        moviesStore.fetchMoviesAPI { (movies: () throws -> [Movie]) in
             do {
                 let movies = try movies()
                 DispatchQueue.main.async {
@@ -50,7 +50,7 @@ class MoviesWorker {
 protocol MoviesStoreProtocol {
     // MARK: CRUD operations
     func addMovie(movieToAdd: Movie, completionHandler: @escaping (() throws -> Movie?) -> Void)
-    func fetchMovies(completionHandler: @escaping (() throws -> [Movie]) -> Void)
+//    func fetchMovies(completionHandler: @escaping (() throws -> [Movie]) -> Void)
     func fetchMoviesAPI(completionHandler: @escaping (() throws -> [Movie]) -> Void)
 }
 

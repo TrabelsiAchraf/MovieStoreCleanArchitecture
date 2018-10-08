@@ -33,10 +33,10 @@ class MoviesListPresenter: MoviesListPresentationLogic {
     func presentFatechedMovies(response: MoviesList.Fetch.Response) {
         var displayedMovies: [MoviesList.Fetch.ViewModel.DisplayedMovie] = []
         for movie in response.movies {
-            let date = dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(movie.releaseDate)))
-            let rating = String(format: "%.2f", movie.rating)
+            let date = dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(movie.releaseDate!)))
+            let rating = String(format: "%.2f", movie.rating!)
             let details = "* Date : \(date) - Rating : \(rating)"
-            let displayedMovie = MoviesList.Fetch.ViewModel.DisplayedMovie(title: movie.title, details: details)
+            let displayedMovie = MoviesList.Fetch.ViewModel.DisplayedMovie(title: movie.title!, details: details)
             displayedMovies.append(displayedMovie)
         }
         let viewModel = MoviesList.Fetch.ViewModel(displayedMovies: displayedMovies)

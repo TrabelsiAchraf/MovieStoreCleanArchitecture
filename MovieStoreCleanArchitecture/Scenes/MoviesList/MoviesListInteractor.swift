@@ -27,7 +27,6 @@ class MoviesListInteractor: MoviesListBusinessLogic, MoviesListDataStore {
     
     var movies: [Movie]?
     
-    
     // MARK: Fetch movies
     
     func fetchMovies(request: MoviesList.Fetch.Request) {

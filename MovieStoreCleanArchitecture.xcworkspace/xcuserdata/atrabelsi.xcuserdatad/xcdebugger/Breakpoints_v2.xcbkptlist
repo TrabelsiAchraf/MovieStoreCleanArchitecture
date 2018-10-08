@@ -2,4 +2,150 @@
 <Bucket
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MovieStoreCleanArchitectureTests/Sevices/MovieMemoryStoreTests.swift"
+            timestampString = "560340474.013427"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "test_should_fetchMovies_fromAPI()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MovieStoreCleanArchitectureTests/Sevices/MovieMemoryStoreTests.swift"
+            timestampString = "560340474.013571"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "test_should_fetchMovies_fromAPI()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MovieStoreCleanArchitecture/Workers/MoviesWorker.swift"
+            timestampString = "560340474.01368"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "fetchMovies(completionHandler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MovieStoreCleanArchitecture.MoviesWorker.fetchMovies(completionHandler: (Swift.Array&lt;MovieStoreCleanArchitecture.Movie&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "MovieStoreCleanArchitecture"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/atrabelsi/Documents/Workspace/MovieStoreCleanArchitecture/MovieStoreCleanArchitecture/Workers/MoviesWorker.swift"
+                  timestampString = "560340474.059152"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "50">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (() throws -&gt; Swift.Array&lt;MovieStoreCleanArchitecture.Movie&gt;) -&gt; () in MovieStoreCleanArchitecture.MoviesWorker.fetchMovies(completionHandler: (Swift.Array&lt;MovieStoreCleanArchitecture.Movie&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "MovieStoreCleanArchitecture"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/atrabelsi/Documents/Workspace/MovieStoreCleanArchitecture/MovieStoreCleanArchitecture/Workers/MoviesWorker.swift"
+                  timestampString = "560340474.067188"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "54">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MovieStoreCleanArchitecture/Scenes/MoviesList/MoviesListViewController.swift"
+            timestampString = "560340474.0137661"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "displayFetchedMovies(viewModel:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MovieStoreCleanArchitecture/Scenes/MoviesList/MoviesListInteractor.swift"
+            timestampString = "560340495.874712"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "fetchMovies(request:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MovieStoreCleanArchitecture.MoviesListInteractor.fetchMovies(request: MovieStoreCleanArchitecture.MoviesList.Fetch.Request) -&gt; ()"
+                  moduleName = "MovieStoreCleanArchitecture"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/atrabelsi/Documents/Workspace/MovieStoreCleanArchitecture/MovieStoreCleanArchitecture/Scenes/MoviesList/MoviesListInteractor.swift"
+                  timestampString = "560340496.090498"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "39">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Array&lt;MovieStoreCleanArchitecture.Movie&gt;) -&gt; () in MovieStoreCleanArchitecture.MoviesListInteractor.fetchMovies(request: MovieStoreCleanArchitecture.MoviesList.Fetch.Request) -&gt; ()"
+                  moduleName = "MovieStoreCleanArchitecture"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/atrabelsi/Documents/Workspace/MovieStoreCleanArchitecture/MovieStoreCleanArchitecture/Scenes/MoviesList/MoviesListInteractor.swift"
+                  timestampString = "560340496.092865"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "37">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

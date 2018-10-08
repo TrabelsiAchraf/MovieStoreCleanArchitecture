@@ -11,13 +11,14 @@
 //
 
 import UIKit
+import Alamofire
 
 protocol MoviesListDisplayLogic: class {
     func displayFetchedMovies(viewModel: MoviesList.Fetch.ViewModel)
 }
 
 class MoviesListViewController: UITableViewController, MoviesListDisplayLogic {
-   
+    
     var interactor: MoviesListBusinessLogic?
     var router: (NSObjectProtocol & MoviesListRoutingLogic & MoviesListDataPassing)?
     var displayedMovies: [MoviesList.Fetch.ViewModel.DisplayedMovie] = []
@@ -51,6 +52,26 @@ class MoviesListViewController: UITableViewController, MoviesListDisplayLogic {
         router.dataStore = interactor
     }
     
+    func startFakeServer() {
+      
+        
+        
+//        let url = URL(string: "https://fakeAPI.cinema.com/movies")
+//        FireMock.register(mock: MockServer.success, forURL: url!, httpMethod: .get, enabled: true)
+//        FireMock.debug(enabled: true)
+//        
+        let sut = MovieMemoryStore()
+        var fetchedMovies = [Movie]()
+        sut.fetchMoviesAPI { (movies: () throws -> [Movie]) in
+            do {
+                fetchedMovies = try movies()
+                print("Fetched movies count : \(fetchedMovies.count)")
+            } catch let error {
+                print("Error : \(error)")
+            }
+        }
+    }
+    
     // MARK: Routing
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -74,11 +95,6 @@ class MoviesListViewController: UITableViewController, MoviesListDisplayLogic {
     }
     
     // MARK: Fetch movies
-    
-    //@IBOutlet weak var nameTextField: UITextField!
-    
-    @IBAction func addMovieButtonDidClicked(_ sender: Any) {
-    }
     
     func fetchMovies() {
         let request = MoviesList.Fetch.Request()

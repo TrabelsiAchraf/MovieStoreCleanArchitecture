@@ -7,7 +7,7 @@
 //
 @testable import MovieStoreCleanArchitecture
 import XCTest
-import Hippolyte
+//import Hippolyte
 
 class MovieMemoryStoreTests: XCTestCase {
     
@@ -98,20 +98,20 @@ class MovieMemoryStoreTests: XCTestCase {
     
     func test_should_fetchMovies_fromAPI() {
         // Given
-        guard let url = URL(string: "https://fakeAPI.cinema.com/movies") else { return }
-        var stub = StubRequest(method: .GET, url: url)
-        var response = StubResponse()
+//        guard let url = URL(string: "https://fakeAPI.cinema.com/movies") else { return }
+//        var stub = StubRequest(method: .GET, url: url)
+//        var response = StubResponse()
         
         // When
         var fetechedMovies = [Movie]()
         var fetchedMoviesError: MoviesStoreError?
         if let path = Bundle(for: type(of: self)).path(forResource: "Movies", ofType: "json") {
             do {
-                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                response.body = data as Data?
-                stub.response = response
-                Hippolyte.shared.add(stubbedRequest: stub)
-                Hippolyte.shared.start()
+//                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+//                response.body = data as Data?
+//                stub.response = response
+//                Hippolyte.shared.add(stubbedRequest: stub)
+//                Hippolyte.shared.start()
                 
                 let expect = expectation(description: "Fetch movies list")
                 
