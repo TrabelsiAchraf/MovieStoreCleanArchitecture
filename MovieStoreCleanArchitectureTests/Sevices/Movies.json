@@ -1,0 +1,26 @@
+{
+    "Movies": [
+        {
+            "id": "2345678987654",
+            "title": "Harry Potter",
+            "overview": "The novels chronicle the lives of a young wizard, Harry Potter, and his friends Hermione Granger and Ron Weasley...",
+            "releaseDate": 1538132604,
+            "rating": 3,
+            "producer": "Chris Columbus"
+        }, {
+            "id": "678944678988",
+            "title": "Spiderman",
+            "overview": "Spider-Man centers on student Peter Parker (Tobey Maguire) who, after being bitten by a genetically-altered spider, gains superhuman strength and the spider-like ability to cling to any surface",
+            "releaseDate": 1538138604,
+            "rating": 3.5,
+            "producer": "Sam Raimi"
+        }, {
+            "id": "8836536763763",
+            "title": "The Godfather",
+            "overview": "Widely regarded as one of the greatest films of all time, this mob drama, based on Mario Puzo's novel of the same name...",
+            "releaseDate": 1538138604,
+            "rating": 4.5,
+            "producer": "Francis Ford Coppola"
+        }
+    ]
+}
