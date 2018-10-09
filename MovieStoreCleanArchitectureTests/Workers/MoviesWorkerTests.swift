@@ -45,7 +45,7 @@ class MoviesWorkerTests: XCTestCase {
         
         // MARK: - Spied methods
         
-        override func fetchMovies(completionHandler: @escaping (() throws -> [Movie]) -> Void) {
+        override func fetchMoviesAPI(completionHandler: @escaping (() throws -> [Movie]) -> Void) {
             fetchedMoviesCalled = true
             completionHandler { () -> [Movie] in
                 return MoviesWorkerTests.testMovies

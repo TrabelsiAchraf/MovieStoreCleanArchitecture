@@ -22,20 +22,16 @@ class MovieMemoryStore: MoviesStoreProtocol, MoviesStoreUtilityProtocol {
         completionHandler { return movie }
     }
     
-//    func fetchMovies(completionHandler: @escaping (() throws -> [Movie]) -> Void) {
-//        completionHandler { return type(of: self).movies }
-//    }
-    
     func fetchMoviesAPI(completionHandler: @escaping (() throws -> [Movie]) -> Void) {
         Alamofire.request(URL(string: Constants.Paths.fetchMovies)!, method: .get)
             .responseJSON { (dataResponse) in
                 guard let moviesDic = dataResponse.result.value as? NSDictionary else { return }
                 if dataResponse.response!.statusCode == 200 {
-                    print(dataResponse)
                     for movieDic in moviesDic.value(forKey: "Movies") as! [NSDictionary] {
                         let movie = Movie(dic: movieDic)
                         type(of: self).movies.append(movie)
                     }
+                    completionHandler { return type(of: self).movies }
                 }
         }
     }

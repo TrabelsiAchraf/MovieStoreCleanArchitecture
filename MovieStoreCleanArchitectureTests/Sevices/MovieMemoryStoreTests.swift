@@ -77,7 +77,7 @@ class MovieMemoryStoreTests: XCTestCase {
         var fetechedMovies = [Movie]()
         var fetchedMoviesError: MoviesStoreError?
         let expect = expectation(description: "Wait for fetchedMovies() to return")
-        sut.fetchMovies { (movies: () throws -> [Movie]) in
+        sut.fetchMoviesAPI { (movies: () throws -> [Movie]) in
             do {
                 fetechedMovies = try movies()
             } catch let error as MoviesStoreError {
@@ -85,6 +85,7 @@ class MovieMemoryStoreTests: XCTestCase {
             } catch {}
             expect.fulfill()
         }
+       
         waitForExpectations(timeout: 1.0)
         
         // Then

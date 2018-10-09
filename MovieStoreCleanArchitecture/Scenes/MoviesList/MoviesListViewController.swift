@@ -52,26 +52,6 @@ class MoviesListViewController: UITableViewController, MoviesListDisplayLogic {
         router.dataStore = interactor
     }
     
-    func startFakeServer() {
-      
-        
-        
-//        let url = URL(string: "https://fakeAPI.cinema.com/movies")
-//        FireMock.register(mock: MockServer.success, forURL: url!, httpMethod: .get, enabled: true)
-//        FireMock.debug(enabled: true)
-//        
-        let sut = MovieMemoryStore()
-        var fetchedMovies = [Movie]()
-        sut.fetchMoviesAPI { (movies: () throws -> [Movie]) in
-            do {
-                fetchedMovies = try movies()
-                print("Fetched movies count : \(fetchedMovies.count)")
-            } catch let error {
-                print("Error : \(error)")
-            }
-        }
-    }
-    
     // MARK: Routing
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
